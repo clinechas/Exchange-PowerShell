@@ -1,0 +1,3 @@
+#Get mailboxes created within the last 6 months of date ran
+Get-Mailbox -ResultSize unlimited | Where-Object {$_.WhenCreated –ge ((Get-Date).Adddays(-180))} | 
+ft name, servername, database | Export-CSV c:mailboxes.csv
